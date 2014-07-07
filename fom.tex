@@ -1,0 +1,159 @@
+% allgemeine Einstellungen
+\documentclass[12pt,a4paper]{report}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{txfonts}
+\usepackage{graphicx}
+
+\usepackage[dvipsnames]{xcolor}
+
+%% geometry
+% Seitenränder einstellen
+% ggf. includefot wieder entfernen
+\usepackage{geometry}
+\geometry{a4paper, top=3.0cm, left=4.0cm, right=2.0cm, bottom=2.0cm, includefoot}
+
+%% biblatex
+% Quellenverzeichnis für deutsche Sprache anpassen
+% Zitats und Autorenstil anpassen
+\usepackage[backend=bibtex8, citestyle=authoryear, bibstyle=authoryear]{biblatex}
+\usepackage[babel,german=guillemets]{csquotes}
+% Quellen-Datei "fom.bib" einlesen
+\bibliography{fom}
+
+
+%% Einrückung
+% Keine Einrückung bei neuen Zeilen
+\setlength{\parindent}{0pt}
+
+%% fancyhdr
+% verwendet um header und footer zu überarbeiten\normalsize
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+% header überschreiben und oben rechts die aktuelle seite zeigen
+\fancyhead{}
+\fancyhead[RO]{\thepage}
+% footer überschreiben
+\fancyfoot{}
+% Keine Trennlinie unter dem Header anzeigen
+\renewcommand{\headrulewidth}{0.0pt}
+% Auf jeder Seite Fancy-Stile aktivieren (verhindert Überschreiben von Inhaltsverzeichnis etc)
+\renewcommand{\bibsetup}{\thispagestyle{fancy}}
+
+%% sectsty
+% Schrift und Zählung von Kapitel
+\usepackage{sectsty}
+\sectionfont{\fontsize{12}{15}\selectfont}
+\subsectionfont{\fontsize{12}{15}\selectfont}
+\subsubsectionfont{\fontsize{12}{15}\selectfont}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+%% setspace
+% 1,5 Zeilenabstand
+\usepackage{setspace}
+\onehalfspacing
+
+%% tocstyle
+% Unterpunkte rechtsbündig im Inhaltsverzeichnis
+\usepackage[tocfullflat]{tocstyle}
+
+%% Quell-Code
+\usepackage{times}
+\usepackage{listings}
+\lstset{
+    language=Ruby,
+    tabsize=2,   
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=lines,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    keywordstyle=\color{blue}\bfseries,
+    stringstyle=\color{green!50!black},
+    commentstyle=\color{gray}\itshape,
+    numbers=left,
+    numbersep=5pt,                   % how far the line-numbers are from the code
+    numberstyle=\tiny\color{gray},    
+    captionpos=b,
+    escapeinside={\%*}{*)}
+}
+
+%% uml
+\usepackage{tikz}
+\usepackage{pgf-umlsd}
+\usepgflibrary{arrows} % for pgf-umlsd
+\usepackage{verbatim}
+
+\begin{document}
+\include{fom_titel}
+
+\setcounter{page}{1}
+\clearpage
+
+% ab hier römische Seit\fontsize{...}{...} enzahlen
+\renewcommand{\thepage}{\roman{page}}
+
+\include{kurzfassung}
+% anzeige vom Kapitel, wird aber nicht gezähl
+\newpage
+
+% Inhaltsverzeichnis
+\addtocontents{toc}{\protect\thispagestyle{fancy}}
+\addcontentsline{toc}{section}{Inhaltsverzeichnis}
+\renewcommand\contentsname{\fontsize{12}{15}\selectfont Inhaltsverzeichnis}
+\tableofcontents
+\newpage
+
+
+
+	
+\section*{Abkürzungsverzeichnis}
+\thispagestyle{fancy}
+\addcontentsline{toc}{section}{Abkürzungsverzeichnis}
+	
+\addcontentsline{toc}{section}{Abbildungsverzeichnis}
+\renewcommand{\listfigurename}{\fontsize{12}{15}\selectfont Abbildungsverzeichnis}
+\thispagestyle{fancy}
+\listoffigures
+\thispagestyle{fancy}
+\addcontentsline{toc}{section}{Listingverzeichnis}
+\renewcommand{\lstlistlistingname}{\fontsize{12}{15}\selectfont Listingverzeichnis}
+\lstlistoflistings
+\thispagestyle{fancy}
+
+\newpage
+
+% Ab hier arabische Seitenzahlen
+\renewcommand{\thepage}{\arabic{page}}
+% Ab hier arabische Kapitelzählung
+\renewcommand{\thesection}{\arabic{section}}
+
+% Kapitel bei 1 anfangen lassen
+\setcounter{section}{0}
+
+% Seite bei 1 anfangen lassen
+\setcounter{page}{1}
+\include{./kapitel/einleitung}
+\include{./kapitel/hintergrund}
+\include{./kapitel/mvc}
+\include{./kapitel/rails}
+\include{./kapitel/mvc_in_rails}
+\include{./kapitel/fazit}
+\include{chapter_2}
+
+
+%% Quellenverzeichnis
+% Im Inhaltsverzeichnis eintragen
+\begingroup
+	\let\clearpage\relax
+	\section{Literatur- und Quellenverzeichnis}
+	\printbibliography[title={\fontsize{12}{15}\selectfont Literatur-Quellen}, type=book]
+	\printbibliography[title={\fontsize{12}{15}\selectfont Online-Quellen}, type=online]
+\endgroup
+
+
+\end{document}

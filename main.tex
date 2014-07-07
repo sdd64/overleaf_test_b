@@ -1,0 +1,296 @@
+\documentclass[11pt,twocolumn,fleqn]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[top=0.3in, bottom=0.3in, left=0.3in, right=0.5in]{geometry}
+\usepackage{titlesec}
+\titleformat*{\section}{\footnotesize\bfseries}
+\titleformat*{\subsection}{\footnotesize\bfseries}
+\titleformat*{\subsubsection}{\footnotesize\bfseries}
+\titleformat*{\paragraph}{\large\bfseries}
+\titleformat*{\subparagraph}{\large\bfseries}
+%% Einrückung
+% Keine Einrückung bei neuen Zeilen
+\setlength{\parindent}{0pt}
+
+
+\begin{document}
+\footnotesize
+
+\section{Kapitel 3}
+
+\textbf{Arithmetische Mittel}
+\begin{equation*}
+\overline{x} = \frac{1}{n}(x_1+x_2+...+x_n)=\frac{1}{n}\sum_{i=1}^{n}x_i
+\end{equation*}
+\begin{center}\begin{tabular}{rcl}
+   $x_i$ & = & i-te Merkmalsausprägung  \\
+   $n$ & = & Anzahl der Merkmalsausprägungen \\
+\end{tabular}\end{center}
+
+
+\textbf{Arithmetische Mittel mit Klassen}
+\begin{equation*}
+\overline{x} = \frac{1}{n}\sum_{k=1}^{m}h_kx_k
+\end{equation*}
+\begin{center}\begin{tabular}{rcl}
+   $h_k$ & = & Häufigkeit der k-ten Klasse  \\
+   $x_k$ & = & Klassenmitte der k-ten Klasse \\
+   $m$   & = & Anzahl der Klassen  \\
+   $n$   & = & Anzahl der Merkmalsausprägungen \\
+\end{tabular}\end{center}
+
+\textbf{Gewichtetes Mittel}
+\begin{equation*}
+\overline{x}_g = \sum_{i=1}^{n}g_ix_i
+\end{equation*}
+\begin{center}\begin{tabular}{rcl}
+   $x_i$ & = & i-te Merkmalsausprägung  \\
+   $n$ & = & Anzahl der Merkmalsausprägungen \\
+   $g_i$   & = &  Gewicht der i-ten Merkmalsausprägung \\
+\end{tabular}\end{center}
+
+
+\textbf{Ganzzahlig gewichtetes Mittel}
+\begin{equation*}
+\overline{x}_g = \frac{\sum_{i=1}^{n}g_ix_i}{\sum^{n}_{i=1}g_i}
+\end{equation*}
+
+\textbf{Modus}
+\begin{equation*}
+Modus = x_u + \frac{h_0-h_{0p}}{2* h_0-h_{0p}-h_{0s}} * w
+\end{equation*}
+\begin{center}\begin{tabular}{rcl}
+   $x_u$ & = & Klassenuntergrenze der Klasse, in die der Modus fällt  \\
+   $h_0$ & = & Häufigkeit dieser Klasse \\
+   $h_{0p}$ & = & Häufigkeit der vorgehenden Klasse von $h_0$  \\
+   $h_{0s}$ & = & Häufigkeit der nachfolgenden Klasse von $h_0$ \\
+   $w$   & = &  Gemeinsame Klassenbreite \\
+\end{tabular}\end{center}
+
+
+\textbf{Median}
+\begin{equation*}
+Median = x_u + \frac{ \frac{n+1}{2}-h_u }{h_e} *w
+\end{equation*}
+\begin{center}\begin{tabular}{rcl}
+   $x_u$ & = & Klassenuntergrenze der Klasse, in die der Median fällt  \\
+   $h_u$ & = & Häufigkeit aller vorgehenden Klasse \\
+   $h_e$ & = & Häufigkeit der Median-Klasse \\
+   $n$   & = & Anzahl der Elemente \\
+   $w$   & = &  Breite der Median-Klasse \\
+\end{tabular}\end{center}
+
+
+\textbf{Geometrisches Mittel}
+\begin{equation*}
+geomatrisches Mittel = \sqrt[n]{x_i*x_2*...x_n}
+\end{equation*}
+\begin{center}\begin{tabular}{rcl}
+   $x_u$ & = & i-te Merkmalsausprägung  \\
+   $n$   & = & Anzahl der Merkmalsausprägungen \\
+\end{tabular}\end{center}
+
+\textbf{Streuungsmaß}
+\begin{equation*}
+\overline{s}=\frac{1}{n}\sum^n_{i=1}|x_1-\overline{x}|
+\end{equation*}
+\begin{center}\begin{tabular}{rcl}
+   $x_u$ & = & i-te Merkmalsausprägung  \\
+   $n$   & = & Anzahl der Merkmalsausprägungen \\
+\end{tabular}\end{center}
+
+\textbf{Streuungsmaß bei Klassen}
+\begin{equation*}
+\overline{s}=\frac{1}{n}\sum^m_{k=1}h_k|x_k-\overline{x}|
+\end{equation*}
+\begin{center}\begin{tabular}{rcl}
+   $h_k$ & = & Häufigkeit der k-ten Klasse  \\
+   $x_k$ & = & Klassenmitte der k-ten Klasse \\
+   $\overline{x}$ & = & Mittelwert \\
+   $m$   & = & Anzahl der Klassen \\
+   $n$   & = &  Anzahl der Merkmalsausprägungen \\
+\end{tabular}\end{center}
+
+\textbf{Varianz (Grundgesamtheit)}
+\begin{equation*}
+\sigma^2=\frac{1}{n}\sum^n_{i=1}(x_i-\overline{x})^2
+\end{equation*}
+
+\textbf{Varianz (Stichprobe)}
+\begin{equation*}
+\sigma^2=\frac{1}{n-1}\sum^n_{i=1}(x_i-\overline{x})^2
+\end{equation*}
+
+\textbf{Varianzkoeffizient}
+\begin{equation*}
+Varianzkoeffizient = \frac{\sigma * 100}{\overline{x} } 
+\end{equation*}
+
+\textbf{Preisindices (fehlen)}
+
+\section{Kapitel 4}
+
+\textbf{Wahrscheinlichkeit}
+\begin{equation*}
+P(E_i)=\frac{H(E_i)}{n}
+\end{equation*}
+
+\textbf{Statistische Wahrscheinlichkeit}
+\begin{equation*}
+P(E_i)= \lim_{n \to \infty} \frac{H(E_i)}{n}
+\end{equation*}
+
+\textbf{Wahrscheinlichkeitsfunktion}
+\begin{equation*}
+f(x)=P(X=x)= \begin{cases} 
+p_j & \text{für}  x = x_j \\ 
+0 & sonst  \\ 
+\end{cases}
+\end{equation*}
+
+\textbf{Verteilungsfunktion}
+\begin{equation*}
+F(x)=P(X \leq x)=\sum_{x_j \leq x }f(x_j)
+\end{equation*}
+
+\textbf{Berechnen einer Reihe von Wahrscheinlichkeiten}
+\begin{equation*}
+P(a<X \leq b) = F(b)-F(a) \sum_{x_j \leq b }f(x_j) - \sum_{x_j \leq a }f(x_j)
+\end{equation*}
+
+\textbf{Stetige Wahrscheinlichkeit}
+\begin{equation*}
+F(x) = P(X \leq x) = \int^x_{-\infty} f(v)dv
+\end{equation*}
+
+\textbf{Bedingte Wahrscheinlichkeit $P=(B|A)$}
+\begin{equation*}
+P(A \cap B) = P(A) * P(B)\\
+P(A \cup B) = P(A) + P(B)
+\end{equation*}
+
+Satz von Bayes (allgemein)
+\begin{equation*}
+P(A|B) = \frac{ P(B|A) * P(A) }{ P(B) }
+\end{equation*}
+
+
+Regel von Bayes für relative Häufigkeiten, am Beispiel 'nicht krank', 'krank' und 'positiv'
+\begin{equation*}
+P(\text{krank}|\text{positiv})=\frac{\text{P(positiv}|\text{krank)}}{\text{P(positiv}|\text{krank)} + \text{P(positiv}|\text{nicht krank) }}
+\end{equation*}
+
+
+\section{Kapitel 6}
+
+\textbf{Schätzwert eines Stichprobenumfangs n}
+\begin{equation*}
+n \geq p (\frac{q}{e})^2
+\end{equation*}
+
+\begin{equation*}
+p = \begin{cases} 
+\sigma^2 & \text{bei quantitativen Merkmalen} \\ 
+P*(1-P) & \text{bei qualitativen Merkmalen}  \\ 
+\end{cases}
+\end{equation*}
+
+\begin{equation*}
+e = \begin{cases} 
+E & \text{bei quantitativen Merkmalen} \\ 
+E*0.01 & \text{bei qualitativen Merkmalen}  \\ 
+\end{cases}
+\end{equation*}
+
+\section{Kapitel 7}
+\textbf{gleitender Durchschnitt 3. Ordnung}
+\begin{equation*}
+\overline{y}_t = \frac{y_{t-1} + y_t + y_{t+1}}{3}
+\end{equation*}
+
+\textbf{gleitender Durchschnitt 4. Ordnung}
+\begin{equation*}
+\overline{y}_t = \frac{ \frac{1}{2}y_{t-2} + y_{t-1} + y_t + y_{t+1} + \frac{1}{2}y_{t+2}}{4}
+\end{equation*}
+
+\textbf{gleitender Durchschnitt 5. Ordnung}
+\begin{equation*}
+\overline{y}_t = \frac{ y_{t-2} + y_{t-1} + y_t + y_{t+1} + y_{t+2}}{5}
+\end{equation*}
+
+\textbf{exponentielle Glättung (fehlt)}
+
+\section{Kapitel 8}
+\textbf{Korrelationskoeffizient}
+\begin{equation*}
+r(x,y)= \frac{s(x,y)}{\sigma(x)*\sigma(y)}
+\end{equation*}
+
+\textbf{Korrelationskoeffizient(Komplex, Stichprobe)}
+
+  \begin{equation*}
+  r(x,y)= \frac{s(x,y)}{\sigma(x)*\sigma(y)} = \frac{ \frac{1}{n-1}\sum^n_{i=1}(x_i-\overline{x})*(y_i-\overline{y}) }{ \sqrt[]{ \frac{1}{n-1}\sum^n_{i=1}(x_i - \overline{x})^2 } * \sqrt[]{ \frac{1}{n-1}\sum^n_{i=1}(y_i - \overline{y})^2 } }
+  \end{equation*}
+  
+\textbf{Korrelationskoeffizient(Komplex, Grundgesamtheit)}
+
+  \begin{equation*}
+  r(x,y)= \frac{s(x,y)}{\sigma(x)*\sigma(y)} = \frac{ \frac{1}{n}\sum^n_{i=1}(x_i-\overline{x})*(y_i-\overline{y}) }{ \sqrt[]{ \frac{1}{n}\sum^n_{i=1}(x_i - \overline{x})^2 } * \sqrt[]{ \frac{1}{n}\sum^n_{i=1}(y_i - \overline{y})^2 } }
+  \end{equation*}  
+
+
+\textbf{Kovarianz}
+\begin{equation*}
+s(x,y)=\frac{1}{n-1}\sum^n_{i=1}(x_i-\overline{x})*(y_i-\overline{y}) 
+\end{equation*}
+
+\textbf{Standardabweichung}
+\begin{equation*}
+\sigma(x) = \sqrt[]{ \frac{1}{n-1}\sum^n_{i=1}(x_i-\overline{x})^2 }
+\end{equation*}
+
+\textbf{Mittelwert}
+\begin{equation*}
+\overline{x}=\frac{1}{n}\sum^n_{i=1}x_i
+\end{equation*}
+
+\textbf{Varianzen für Grundgesamtheiten}
+\begin{equation*}
+s(x,y)=\frac{1}{n}\sum^n_{i=1}(x_i-\overline{x})*(y_i-\overline{y}) 
+\end{equation*}
+
+\begin{equation*}
+\sigma(x)^2=\frac{1}{n}\sum^n_{i=1}(x_i-\overline{x})^2 
+\end{equation*}
+
+\textbf{Lineare Abhängigkeit}
+
+Ist die Variable y von der Variablen x statistisch linear abhängig, d. h. es besteht eine Beziehung der Form y = a + b x, sind die Parameter der Regressionsgeraden wie folgt definiert: 
+
+\begin{equation*}
+b:=\frac{s(x,y)}{s(x)^2}\\
+a:=\overline{y}-b*\overline{x}
+\end{equation*}
+
+Bestimmtheitsmaß B gibt an, wie gut die Beziehung der Größen durch die Regressionsgerade erklärt wird
+\begin{equation*}
+B:=\frac{ \sum^n_{i=1}(\widehat{y}_i-\overline{y})^2 }{ \sum^n_{i=1}(y_i-\overline{y})^2 }
+\end{equation*}
+\begin{center}\begin{tabular}{rcl}
+   $\widehat{y}_i$ & = & Funktionswert auf der Regressionsgerade \\
+   $y_i$ & = & Beobachtungswert \\
+   $\overline{y}$ & = & Arithmetisches Mttel \\
+\end{tabular}\end{center}
+
+\section{Übung 5: Korrelationsanalyse}
+\textbf{$\mu$}
+
+
+\textbf{$\sigma$}
+
+
+\end{document}
