@@ -7,6 +7,8 @@
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage[top=0.3in, bottom=0.3in, left=0.3in, right=0.5in]{geometry}
 \usepackage{titlesec}
+\usepackage{tikz}
+\usetikzlibrary{trees}
 \titleformat*{\section}{\footnotesize\bfseries}
 \titleformat*{\subsection}{\footnotesize\bfseries}
 \titleformat*{\subsubsection}{\footnotesize\bfseries}
@@ -130,7 +132,6 @@ geomatrisches Mittel = \sqrt[n]{x_i*x_2*...x_n}
 Varianzkoeffizient = \frac{\sigma * 100}{\overline{x} } 
 \end{equation*}
 
-\textbf{Preisindices (fehlen)}
 
 \section{Kapitel 4}
 
@@ -179,10 +180,66 @@ P(A|B) = \frac{ P(B|A) * P(A) }{ P(B) }
 \end{equation*}
 
 
-Regel von Bayes für relative Häufigkeiten, am Beispiel 'nicht krank', 'krank' und 'positiv'
+
+\textbf{Tip: Summe von Wahrscheinlichkeiten}
 \begin{equation*}
-P(\text{krank}|\text{positiv})=\frac{\text{P(positiv}|\text{krank)}}{\text{P(positiv}|\text{krank)} + \text{P(positiv}|\text{nicht krank) }}
+P(\neg A) = 1 - P(A)
 \end{equation*}
+
+\textbf{Wahrscheinlichkeitsbaum}
+% Set the overall layout of the tree
+\tikzstyle{level 1}=[level distance=2.5cm, sibling distance=2.5cm]
+\tikzstyle{level 2}=[level distance=2.0cm, sibling distance=2.0cm]
+
+% Define styles for bags and leafs
+\tikzstyle{bag} = [text width=4em, text centered]
+\tikzstyle{end} = [circle, minimum width=3pt,fill, inner sep=0pt]
+\begin{tikzpicture}[grow=right, sloped]
+\node[bag] {Produkte $100$}
+    child {
+        node[bag] {$20$}        
+            child {
+                node[end, label=right:
+                    {$P(S2 \cap def.)= 0,2 * 0,05 $}] {}
+                edge from parent
+                node[above] {defekt}
+                node[below]  {$5\%$}
+            }
+            child {
+                node[end, label=right:
+                    {$P(S1 \cap gut)= 0,2 * 0,95 $}] {}
+                edge from parent
+                node[above] {gut}
+                node[below]  {$95\%$}
+            }
+            edge from parent 
+            node[above] {$S2$}
+            node[below]  {prod. 20}
+    }
+    child {
+        node[bag] {80}        
+        child {
+                node[end, label=right:
+                    {$P(S1 \cap def.)= 0,8 * 0,1$}] {}
+                edge from parent
+                node[above] {defekt}
+                node[below]  {$10\%$}
+            }
+            child {
+                node[end, label=right:
+                    {$P(S1 \cap gut)=0,8 * 0,9$}] {}
+                edge from parent
+                node[above] {gut}
+                node[below]  {$90\%$}
+            }
+        edge from parent         
+            node[above] {$S1$}
+            node[below]  {prod. 80}
+    };
+\end{tikzpicture}
+
+Wie groß sind die Wahrscheinlichkeiten, dass ein Produkt am Standort S2 produziert worden ist, wenn das Produkt defekt ist?
+$P(produziert S2 | defekt) = (0,2 * 0,05) / (0,2*0,05 + 0,1 * 0,8) = 0,11$ 
 
 
 \section{Kapitel 6}
@@ -205,6 +262,8 @@ E & \text{bei quantitativen Merkmalen} \\
 E*0.01 & \text{bei qualitativen Merkmalen}  \\ 
 \end{cases}
 \end{equation*}
+
+E= z.B. ''5\% Intervallschätzung'', P="Abweichung von 20 Euro", oder P = Bekanntheitsgrad, z.B. ''75\%''. Falls kein Bekanntheitsgrad angegeben P=0.25  
 
 \section{Kapitel 7}
 \textbf{gleitender Durchschnitt 3. Ordnung}
@@ -276,6 +335,7 @@ b:=\frac{s(x,y)}{s(x)^2}\\
 a:=\overline{y}-b*\overline{x}
 \end{equation*}
 
+\textbf{Bestimmtheitsmaß (komplex)}
 Bestimmtheitsmaß B gibt an, wie gut die Beziehung der Größen durch die Regressionsgerade erklärt wird
 \begin{equation*}
 B:=\frac{ \sum^n_{i=1}(\widehat{y}_i-\overline{y})^2 }{ \sum^n_{i=1}(y_i-\overline{y})^2 }
@@ -286,11 +346,60 @@ B:=\frac{ \sum^n_{i=1}(\widehat{y}_i-\overline{y})^2 }{ \sum^n_{i=1}(y_i-\overli
    $\overline{y}$ & = & Arithmetisches Mttel \\
 \end{tabular}\end{center}
 
+\textbf{Bestimmtheitsmaß (simpel)}
+\begin{equation*}
+B=(r(x,y))^2
+\end{equation*}
+
+
+
+
 \section{Übung 5: Korrelationsanalyse}
-\textbf{$\mu$}
+\textbf{Erwartungswert}
+\begin{equation*}
+\mu = \sum^n_{i=i}p_i*e_i
+\end{equation*}
+
+\textbf{Erwartungsnutzen}
+\begin{equation*}
+Y=EU(a_i)=\sum_kp_k*u(e_i,_k)
+\end{equation*}
 
 
-\textbf{$\sigma$}
+\textbf{Einzahlungen und Erwartungsnutzen}
+B=400
+\begin{center}
+    \begin{tabular}{ l | l | l | l | l | l l}
+                   & s1  & s2  & s3  & s4 & \multicolumn{2}{c}{$ \sqrt[]{(e-min)/(max-min)} $}  \\
+                   & 0.2 & 0.3 & 0.1 & 0.4 & Rendite[\%]$\mu$ & Risiko[\%]$\sigma$ \\ \hline
+    a3(6x50,1x100) & 340 & 600 & 360 & 580 & \multicolumn{2}{c}{$EU(a)$ = 0.73} \\ \hline                   
+    a3(6x50,1x100) & -15 & 50 & -10 & 45 & 29.0  & 27.8 \\ \hline
+    \end{tabular}
+\end{center}
 
+\begin{equation*}
+e_{3,1} = \frac{b_{3,1}-b_0} {b_0}* 100 = \frac{340-400}{400}*100=-15
+\end{equation*}
+
+\begin{equation*}
+e_{3,2} = \frac{b_{3,1}-b_0} {b_0}* 100 = \frac{600-400}{400}*100=50
+\end{equation*}
+
+\textbf{Korrelation der Anlagen 1 und 2}
+\begin{equation*}
+r(a_1,a_2)=\frac{ \sum^4_{k=1}(e_{1,k}-\mu_1)*(e_{2,k}-\mu_2)*p_k }{ \sigma_1 * \sigma_2 } = 0.09
+\end{equation*}
+
+
+\textbf{Erwartete Rendite}
+\begin{equation*}
+\end{equation*}
+
+\textbf{Risiko der Rendite}
+
+\textbf{Diversifikationseffekt (simpel)}
+\begin{equation*}
+\delta(a_3)=\sigma_{a3}-\mu_{a3} = 27.8 - 29.9 = -2.1
+\end{equation*}
 
 \end{document}
