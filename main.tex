@@ -34,28 +34,6 @@
 \end{tabular}\end{center}
 
 
-\textbf{Arithmetische Mittel mit Klassen}
-\begin{equation*}
-\overline{x} = \frac{1}{n}\sum_{k=1}^{m}h_kx_k
-\end{equation*}
-\begin{center}\begin{tabular}{rcl}
-   $h_k$ & = & Häufigkeit der k-ten Klasse  \\
-   $x_k$ & = & Klassenmitte der k-ten Klasse \\
-   $m$   & = & Anzahl der Klassen  \\
-   $n$   & = & Anzahl der Merkmalsausprägungen \\
-\end{tabular}\end{center}
-
-\textbf{Gewichtetes Mittel}
-\begin{equation*}
-\overline{x}_g = \sum_{i=1}^{n}g_ix_i
-\end{equation*}
-\begin{center}\begin{tabular}{rcl}
-   $x_i$ & = & i-te Merkmalsausprägung  \\
-   $n$ & = & Anzahl der Merkmalsausprägungen \\
-   $g_i$   & = &  Gewicht der i-ten Merkmalsausprägung \\
-\end{tabular}\end{center}
-
-
 \textbf{Ganzzahlig gewichtetes Mittel}
 \begin{equation*}
 \overline{x}_g = \frac{\sum_{i=1}^{n}g_ix_i}{\sum^{n}_{i=1}g_i}
@@ -127,9 +105,9 @@ geomatrisches Mittel = \sqrt[n]{x_i*x_2*...x_n}
 \sigma^2=\frac{1}{n-1}\sum^n_{i=1}(x_i-\overline{x})^2
 \end{equation*}
 
-\textbf{Varianzkoeffizient}
+\textbf{Variationskoeffizient}
 \begin{equation*}
-Varianzkoeffizient = \frac{\sigma * 100}{\overline{x} } 
+Variationskoeffizient = \frac{\sigma * 100}{\overline{x} } 
 \end{equation*}
 
 
@@ -179,7 +157,10 @@ Satz von Bayes (allgemein)
 P(A|B) = \frac{ P(B|A) * P(A) }{ P(B) }
 \end{equation*}
 
-
+\textbf{Der Patient ist nach postiven Test krank}
+\begin{equation*}
+P(krank|positiv) = \frac{H(positiv | krank)}{H(positiv|krank) + H(positiv|gesund)}
+\end{equation*}
 
 \textbf{Tip: Summe von Wahrscheinlichkeiten}
 \begin{equation*}
@@ -281,8 +262,6 @@ E= z.B. ''5\% Intervallschätzung'', P="Abweichung von 20 Euro", oder P = Bekann
 \overline{y}_t = \frac{ y_{t-2} + y_{t-1} + y_t + y_{t+1} + y_{t+2}}{5}
 \end{equation*}
 
-\textbf{exponentielle Glättung (fehlt)}
-
 \section{Kapitel 8}
 \textbf{Korrelationskoeffizient}
 \begin{equation*}
@@ -300,31 +279,6 @@ r(x,y)= \frac{s(x,y)}{\sigma(x)*\sigma(y)}
   \begin{equation*}
   r(x,y)= \frac{s(x,y)}{\sigma(x)*\sigma(y)} = \frac{ \frac{1}{n}\sum^n_{i=1}(x_i-\overline{x})*(y_i-\overline{y}) }{ \sqrt[]{ \frac{1}{n}\sum^n_{i=1}(x_i - \overline{x})^2 } * \sqrt[]{ \frac{1}{n}\sum^n_{i=1}(y_i - \overline{y})^2 } }
   \end{equation*}  
-
-
-\textbf{Kovarianz}
-\begin{equation*}
-s(x,y)=\frac{1}{n-1}\sum^n_{i=1}(x_i-\overline{x})*(y_i-\overline{y}) 
-\end{equation*}
-
-\textbf{Standardabweichung}
-\begin{equation*}
-\sigma(x) = \sqrt[]{ \frac{1}{n-1}\sum^n_{i=1}(x_i-\overline{x})^2 }
-\end{equation*}
-
-\textbf{Mittelwert}
-\begin{equation*}
-\overline{x}=\frac{1}{n}\sum^n_{i=1}x_i
-\end{equation*}
-
-\textbf{Varianzen für Grundgesamtheiten}
-\begin{equation*}
-s(x,y)=\frac{1}{n}\sum^n_{i=1}(x_i-\overline{x})*(y_i-\overline{y}) 
-\end{equation*}
-
-\begin{equation*}
-\sigma(x)^2=\frac{1}{n}\sum^n_{i=1}(x_i-\overline{x})^2 
-\end{equation*}
 
 \textbf{Lineare Abhängigkeit}
 
@@ -351,6 +305,33 @@ B:=\frac{ \sum^n_{i=1}(\widehat{y}_i-\overline{y})^2 }{ \sum^n_{i=1}(y_i-\overli
 B=(r(x,y))^2
 \end{equation*}
 
+\textbf{Regressionsanalyse}
+\begin{center}
+    \begin{tabular}{ l | l | l | l }
+Beobachtung        & 1    & 2    & 3\\
+x Preis pro Kugel  & 1,00 & 1,50 & 2\\ \hline
+y Absatz pro Kugel & 5    & 5    & 2
+    \end{tabular}
+\end{center}
+
+\begin{center}
+    \begin{tabular}{ l | l | l | l | l | l }
+i & $x_i$ & $y_i$ & $ (x_i - \overline{x})^2 $ & $(y_i - \overline{y})^2$ & $(x_i - \overline{x})(y_i - \overline{y})$ \\ \hline
+1       & 1,0 & 5  & 0,25 & 1  & -0,5 \\ 
+2       & 1,5 & 5  & 0    & 1  & 0    \\
+3       & 2,0 & 2  & 0,25 & 4  & -1   \\ \hline
+$\sum$  & 4,5 & 12 & 0,5  & 6  & -1,5 
+    \end{tabular}
+\end{center}
+$ \overline{x}=1,5$ ; $\overline{y}=4$ \newline
+$ s(x,y) = \frac{1}{3}*(-1,5) = -0,5 $ \newline
+\begin{equation*}
+  r(x,y) = \frac{-0,5}{ \sqrt[]{\frac{1}{3}(0,5) } * \sqrt[]{ \frac{1}{3}(6) } } = -0,87; B=(r(x,y)^2) = 0,7569 = 76\% 
+\end{equation*}
+
+\begin{equation*}
+b = \frac{-0,5}{ \frac{1}{3}(0,5) } = -3; a = 6 - (-3 * 0,5) = 7,5; y = 7,5 - 3x 
+\end{equation*}
 
 
 
@@ -368,6 +349,16 @@ Y=EU(a_i)=\sum_kp_k*u(e_i,_k)
 
 \textbf{Einzahlungen und Erwartungsnutzen}
 B=400
+
+\begin{center}
+    \begin{tabular}{ l| l | l | l | l }
+           & s1  & s2  & s3  & s4  \\ \hline
+Ergebnis 1 & 40  & 80  & 40  & 80  \\
+Ergebnis 2 & 100 & 120 & 120 & 100 \\ \hline
+Warsch. \% & 20  & 30  & 10  & 40
+    \end{tabular}
+\end{center}
+
 \begin{center}
     \begin{tabular}{ l | l | l | l | l | l l}
                    & s1  & s2  & s3  & s4 & \multicolumn{2}{c}{$ \sqrt[]{(e-min)/(max-min)} $}  \\
@@ -376,6 +367,7 @@ B=400
     a3(6x50,1x100) & -15 & 50 & -10 & 45 & 29.0  & 27.8 \\ \hline
     \end{tabular}
 \end{center}
+$ 340 = (6*40)+(1*100); 600 = (6*80)+(1*120); ...  $
 
 \begin{equation*}
 e_{3,1} = \frac{b_{3,1}-b_0} {b_0}* 100 = \frac{340-400}{400}*100=-15
@@ -390,12 +382,28 @@ e_{3,2} = \frac{b_{3,1}-b_0} {b_0}* 100 = \frac{600-400}{400}*100=50
 r(a_1,a_2)=\frac{ \sum^4_{k=1}(e_{1,k}-\mu_1)*(e_{2,k}-\mu_2)*p_k }{ \sigma_1 * \sigma_2 } = 0.09
 \end{equation*}
 
-
 \textbf{Erwartete Rendite}
 \begin{equation*}
+\mu(a_3) = x_1 * \mu_1 + x_2 * \mu_2 = (0,75*36)+(0,25*8)=29
+\end{equation*}
+
+\textbf{Erwartete Rendite(simpel)}
+\begin{equation*}
+\mu(a_3) = ((-15 * 0,2) + (50 * 0,3) + (-10 * 0,1) + (45 * 04)) / 4 = 29 
 \end{equation*}
 
 \textbf{Risiko der Rendite}
+\begin{equation*}
+\sigma(a_3) = \sqrt[]{x^2_1 * \sigma^2_1 + x^2_2 * \sigma^2_2 + 2 * x_1 * \sigma_1 * x_2 \sigma_2 * r (a_1,a_2) } = 27,8
+\end{equation*}
+
+\textbf{Risiko der Rendite(simpel)}
+\begin{equation*}
+\sigma(X)= \sqrt[]{\sum p(x)*(x - \mu(X))^2}
+\end{equation*}
+\begin{equation*}
+\sqrt[]{0,2*(-15-29)^2 + 0,3 * (50-29)^2 + 0,1 * (-10-29)^2 + 0,4 * (45-29)^2 }
+\end{equation*}
 
 \textbf{Diversifikationseffekt (simpel)}
 \begin{equation*}
